@@ -10,7 +10,7 @@
 - name: configure minidlna
   become: true
   template:
-    src: templates/minidlna.conf.j2
+    src: minidlna.conf.j2
     dest: "{{ minidlna_config_file }}"
     owner: "{{ minidlna_system_user }}"
     group: "{{ minidlna_system_group }}"
