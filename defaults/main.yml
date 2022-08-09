@@ -1,0 +1,32 @@
+---
+proxy_env: {}
+minidlna_version: 1.3.0
+minidlna_config_file: /etc/minidlna.conf
+minidlna_log_dir: "/var/log/minidlna"
+minidlna_db_dir: "/var/cache/minidlna"
+minidlna_system_user: "{{ minidlna_user | default('minidlna') }}"
+minidlna_system_group: "{{ minidlna_group | default('minidlna') }}"
+minidlna_media_dirs:
+  - content_type: P
+    folder: /var/lib/minidlna
+minidlna_album_art_dirs:
+  - names: "Cover.jpg/cover.jpg/AlbumArtSmall.jpg/albumartsmall.jpg"
+  - names: "AlbumArt.jpg/albumart.jpg/Album.jpg/album.jpg"
+  - names: "Folder.jpg/folder.jpg/Thumb.jpg/thumb.jpg"
+minidlna_merge_media_dirs: "no"
+minidlna_root_container: "."
+minidlna_network_interface: "{{ ansible_default_ipv4.interface }}"
+minidlna_serial: "{{ ansible_default_ipv4.macaddress }}"
+minidlna_port: 9500
+minidlna_presentation_url: "/"
+minidlna_friendly_name: "minidlna"
+minidlna_model_name: "Windows Media Connect compatible (MiniDLNA)"
+minidlna_inotify: "yes"
+minidlna_strict_dlna: "no"
+minidlna_enable_tivo: "no"
+minidlna_tivo_discovery: "bonjour"
+minidlna_notify_interval: 90
+minidlna_minissdpdsocket: ""
+minidlna_force_sort_criteria: ""
+minidlna_max_connections: 5
+minidlna_wide_links: "yes"
