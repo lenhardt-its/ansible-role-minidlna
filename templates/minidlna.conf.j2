@@ -20,7 +20,7 @@ user={{ minidlna_system_user }}
 #   * "V" for video    (eg. media_dir=V,/var/lib/minidlna/videos)
 #   * "PV" for pictures and video (eg. media_dir=PV,/var/lib/minidlna/digital_camera)
 #media_dir=V,/var/lib/minidlna
-{% if minidlna_media_dirs defined %}
+{% if minidlna_media_dirs is defined %}
 {%   for media_dir in minidlna_media_dirs %}
 media_dir={{ media_dir.content_type }},{{ media_dir.folder }}
 {%   endfor %}
@@ -89,7 +89,7 @@ model_name={{ minidlna_model_name }}
 
 # Model number the server reports to clients.
 # Defaults to the version number of minidlna.
-model_number={{ minidlna_version }}
+model_number={{ minidlna_version.split('+')[0] }}
 
 # Automatic discovery of new files in the media_dir directory.
 inotify={{ minidlna_inotify }}
@@ -100,7 +100,7 @@ inotify={{ minidlna_inotify }}
 #album_art_names=Cover.jpg/cover.jpg/AlbumArtSmall.jpg/albumartsmall.jpg
 #album_art_names=AlbumArt.jpg/albumart.jpg/Album.jpg/album.jpg
 #album_art_names=Folder.jpg/folder.jpg/Thumb.jpg/thumb.jpg
-{% if minidlna_album_art_dirs defined %}
+{% if minidlna_album_art_dirs is defined %}
 {%   for album_art_dir in minidlna_album_art_dirs %}
 album_art_names={{ album_art_dir.names }}
 {%   endfor %}
@@ -124,7 +124,7 @@ notify_interval={{ minidlna_notify_interval }}
 # Path to the MiniSSDPd socket, for MiniSSDPd support.
 {% if minidlna_minissdpdsocket | length > 0 %}
 minissdpdsocket={{ minidlna_minissdpdsocket }}
-{% elif %}
+{% else %}
 #minissdpdsocket=/run/minissdpd.sock
 {% endif %}
 
@@ -133,7 +133,7 @@ minissdpdsocket={{ minidlna_minissdpdsocket }}
 # e.g. force_sort_criteria=+upnp:class,+upnp:originalTrackNumber,+dc:title
 {% if minidlna_force_sort_criteria | length > 0 %}
 force_sort_criteria={{ minidlna_force_sort_criteria }}
-{% elif %}
+{% else %}
 #force_sort_criteria=
 {% endif %}
 

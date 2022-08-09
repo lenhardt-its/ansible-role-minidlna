@@ -1,6 +1,6 @@
 ---
 proxy_env: {}
-minidlna_version: 1.3.0
+minidlna_version: "1.3.0+dfsg-2.1"
 minidlna_config_file: /etc/minidlna.conf
 minidlna_log_dir: "/var/log/minidlna"
 minidlna_db_dir: "/var/cache/minidlna"
